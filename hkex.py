@@ -1,5 +1,5 @@
 #===============================================================================================================================================
-#imports
+# imports
 import os
 import csv
 import argparse
@@ -7,28 +7,28 @@ import datetime
 import threading
 
 #===============================================================================================================================================
-#Imports from HKEx Tools
+# Imports from HKEx Tools
 from hkextools import highlight
 from hkextools import nettools
 from hkextools import statusSum
 from hkextools import utiltools
 from hkextools import fAnalysis
 #===============================================================================================================================================
-#Assign folderPath to other modules
+# Assign folderPath to other modules
 folderPath = os.path.dirname(os.path.abspath(__file__))
-#Load settings
+# Load settings
 allSettings = utiltools.readSettings(os.path.join('Settings', 'settings.txt'))
 fAnalysis.outputPath = highlight.outputPath = allSettings['Output Path']
 highlight.criteriaPath = allSettings['Criteria Path']
 fAnalysis.fxRate = allSettings['Currency']
-#statusSum.folderPath = utiltools.folderPath = nettools.folderPath = fAnalysis.folderPath = highlight.folderPath = folderPath
+# statusSum.folderPath = utiltools.folderPath = nettools.folderPath = fAnalysis.folderPath = highlight.folderPath = folderPath
 statusSum.folderPath = utiltools.folderPath = nettools.folderPath = fAnalysis.folderPath = folderPath
-#Assign date values to other modules
+# Assign date values to other modules
 thisDay, thisMonth, thisYear = utiltools.obtDate()
 fAnalysis.thisDay = nettools.thisDay = thisDay
 fAnalysis.thisMonth = nettools.thisMonth = thisMonth
 fAnalysis.thisYear = nettools.thisYear = thisYear
-#Assign keyword values to other modules
+# Assign keyword values to other modules
 keywords = statusSum.keywordsRead()
 nettools.keywords = keywords
 #===============================================================================================================================================
@@ -48,7 +48,7 @@ def main():
 	args = parser.parse_args()
 
 	if (args.data): getData = 1
-	if (os.path.isfile(os.path.join(folderPath,'coList.csv'))==False) or (args.list): utiltools.main()
+	if (os.path.isfile(os.path.join(folderPath, 'coList.csv')) == False) or (args.list): utiltools.main()
 
 	coRecords = utiltools.readCoList(os.path.join(folderPath, 'coList.csv'))
 	coDict = {coRecord[0] : coRecord[2] for coRecord in coRecords}
