@@ -42,3 +42,4 @@ def get_stock_list():
     
 if __name__ == "__main__":
     sys.exit(get_stock_list())
+ 
